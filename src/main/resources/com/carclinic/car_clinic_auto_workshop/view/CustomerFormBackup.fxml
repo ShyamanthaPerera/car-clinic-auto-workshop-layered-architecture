@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carclinic.car_clinic_auto_workshop.controller.CustomerForm">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="15.0" prefHeight="620.0" prefWidth="220.0" style="-fx-background-color: #b2bec3; -fx-background-radius: 10; -fx-border-radius: 10;">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="122.0" onAction="#btnDashboardAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="       Dashboard" textAlignment="RIGHT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="222.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="         Live Camera">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="272.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="       Summary Report">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="322.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="      Elephant Details" textAlignment="RIGHT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="372.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="      Villagers Details">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="422.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="       Danger Zones">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="472.0" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="Comlains">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="172.0" onAction="#btnCustomerOnAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="Customers" textAlignment="RIGHT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="566.0" onAction="#btnLogOutAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #a29bfe;" text="Log Out">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label layoutX="91.0" layoutY="25.0" text="Car">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="91.0" layoutY="43.0" text="Clinic">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="250.0" layoutY="16.0" prefHeight="620.0" prefWidth="935.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 10; -fx-border-radius: 10;">
+         <children>
+            <Label layoutX="10.0" layoutY="2.0" prefHeight="53.0" prefWidth="180.0" text="Customers">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDate" layoutX="775.0" layoutY="12.0" prefHeight="21.0" prefWidth="56.0" text="Date" />
+            <Label fx:id="lblTime" layoutX="699.0" layoutY="12.0" prefHeight="21.0" prefWidth="56.0" text="Time" />
+            <Separator layoutX="762.0" layoutY="9.0" orientation="VERTICAL" prefHeight="26.0" prefWidth="0.0" />
+            <JFXTextField fx:id="textCustomerID" labelFloat="true" layoutX="315.0" layoutY="133.0" prefHeight="31.0" prefWidth="101.0" promptText="Customer ID" />
+            <JFXTextField fx:id="textCustomerName" labelFloat="true" layoutX="442.0" layoutY="133.0" prefHeight="31.0" prefWidth="310.0" promptText="Customer Name" />
+            <JFXTextField fx:id="txtContactNumber" labelFloat="true" layoutX="559.0" layoutY="209.0" prefHeight="31.0" prefWidth="194.0" promptText="Contact Number" />
+            <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="193.0" layoutY="209.0" prefHeight="31.0" prefWidth="322.0" promptText="Address" />
+            <JFXButton buttonType="RAISED" layoutX="237.0" layoutY="266.0" onAction="#btnAddCustomerOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #a29bfe;" text="Add">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="378.0" layoutY="266.0" onAction="#btnUpdateCustomerOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #a29bfe;" text="Update">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="511.0" layoutY="266.0" onAction="#btnDeleteCustomerOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #a29bfe;" text="Remove">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <TableView fx:id="CustomerTbl" layoutX="43.0" layoutY="317.0" prefHeight="285.0" prefWidth="865.0">
+               <columns>
+                  <TableColumn fx:id="userCol" prefWidth="98.0" text="User" />
+                  <TableColumn fx:id="customerIDCol" prefWidth="102.0" text="Customer ID" />
+                  <TableColumn fx:id="customerNameCol" prefWidth="209.0" text="Customer Name" />
+                  <TableColumn fx:id="addressCol" prefWidth="291.0" text="Address" />
+                  <TableColumn fx:id="contactCol" prefWidth="172.0" text="Contact Number" />
+               </columns>
+            </TableView>
+            <JFXButton buttonType="RAISED" layoutX="639.0" layoutY="266.0" onAction="#btnClearOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #a29bfe;" text="Clear">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="txtUser" labelFloat="true" layoutX="193.0" layoutY="133.0" prefHeight="31.0" prefWidth="101.0" promptText="User" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

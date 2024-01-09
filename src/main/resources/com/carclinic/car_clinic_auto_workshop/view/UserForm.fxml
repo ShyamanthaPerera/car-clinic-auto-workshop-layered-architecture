@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="1080.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carclinic.car_clinic_auto_workshop.controller.UserFormController">
+    <children>
+        <AnchorPane layoutX="250.0" layoutY="16.0" maxWidth="1350.0" minWidth="900.0" prefHeight="570.0" prefWidth="934.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 10; -fx-border-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane layoutX="807.0" layoutY="13.0" maxWidth="1350.0" minWidth="258.0" prefHeight="545.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF; -fx-border-radius: 10; -fx-background-radius: 10;">
+                    <children>
+                        <ImageView fitHeight="211.0" fitWidth="258.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/Untitled-2.jpg" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="106.0" fitWidth="102.0" layoutX="78.0" layoutY="64.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8-boss-100.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="29.0" layoutY="337.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8-password-100.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="29.0" layoutY="279.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/icons8-id-verified-100.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="lblName" alignment="CENTER" layoutX="35.0" layoutY="186.0" prefHeight="26.0" prefWidth="188.0" text="XXXXXXXXXXX">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblUsername" layoutX="68.0" layoutY="281.0" prefHeight="26.0" prefWidth="179.0" text="XXXXXXXXXXXXXXX">
+                            <font>
+                                <Font name="System Bold" size="17.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblPassword" layoutX="68.0" layoutY="339.0" prefHeight="26.0" prefWidth="179.0" text="XXXXXXXXXXXXXXX">
+                            <font>
+                                <Font name="System Bold" size="17.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="14.0" layoutY="15.0" prefHeight="194.0" prefWidth="778.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-radius: 10;">
+                    <children>
+                        <JFXButton fx:id="userUpdateBtn" alignment="CENTER" buttonType="RAISED" layoutX="351.0" layoutY="150.0" onAction="#btnUpdateUserOnAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #a29bfe;" text="Update" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font name="System Bold" size="10.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/icons8-update-64.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="userAddBtn" buttonType="RAISED" layoutX="254.0" layoutY="150.0" onAction="#btnAddUserOnAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #a29bfe;" text="Add" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font name="System Bold" size="10.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/icons8-add-64.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" layoutX="445.0" layoutY="150.0" onAction="#btnUserClearOnAction" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #a29bfe;" text="Clear" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font name="System Bold" size="10.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@images/icons8-broom-60.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <AnchorPane layoutX="59.0" layoutY="56.0" prefHeight="37.0" prefWidth="200.0" style="-fx-border-color: #3498db; -fx-border-radius: 10; -fx-background-radius: 10;">
+                            <children>
+                                <Label layoutX="10.0" layoutY="-10.0" style="-fx-background-color: #FFFFFF;" text=" Username * " />
+                                <TextField fx:id="textUsername" layoutX="9.0" layoutY="7.0" onKeyReleased="#validateUserForm" prefHeight="31.0" prefWidth="188.0" style="-fx-background-color: #FFFFFF;" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="312.0" layoutY="56.0" prefHeight="37.0" prefWidth="200.0" style="-fx-border-color: #3498db; -fx-border-radius: 10; -fx-background-radius: 10;">
+                            <children>
+                                <Label layoutX="10.0" layoutY="-10.0" style="-fx-background-color: #FFFFFF;" text=" Password * " />
+                                <TextField fx:id="textPassword" layoutX="9.0" layoutY="7.0" onKeyReleased="#validateUserForm" prefHeight="31.0" prefWidth="188.0" style="-fx-background-color: #FFFFFF;" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="550.0" layoutY="56.0" prefHeight="37.0" prefWidth="200.0" style="-fx-border-color: #3498db; -fx-border-radius: 10; -fx-background-radius: 10;">
+                            <children>
+                                <Label layoutX="10.0" layoutY="-10.0" style="-fx-background-color: #FFFFFF;" text=" Name * " />
+                                <TextField fx:id="textName" layoutX="6.0" layoutY="8.0" onKeyReleased="#validateUserForm" prefHeight="31.0" prefWidth="188.0" style="-fx-background-color: #FFFFFF;" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="14.0" layoutY="220.0" prefHeight="339.0" prefWidth="778.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-border-radius: 10;">
+                    <children>
+                        <TableView fx:id="userTbl" layoutX="11.0" layoutY="66.0" prefHeight="268.0" prefWidth="757.0">
+                            <columns>
+                                <TableColumn fx:id="usernameCol" prefWidth="202.0" text="Username" />
+                                <TableColumn fx:id="passwordCol" prefWidth="188.0" text="Password" />
+                                <TableColumn fx:id="nameCol" prefWidth="248.0" text="Name" />
+                                <TableColumn fx:id="actionCol" prefWidth="118.0" text="Action" />
+                            </columns>
+                        </TableView>
+                        <JFXTextField fx:id="txtdynamicSearch" labelFloat="true" layoutX="251.0" layoutY="22.0" onKeyReleased="#dynamicSearchAction" prefHeight="31.0" prefWidth="277.0" promptText="Dynamic Search" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
