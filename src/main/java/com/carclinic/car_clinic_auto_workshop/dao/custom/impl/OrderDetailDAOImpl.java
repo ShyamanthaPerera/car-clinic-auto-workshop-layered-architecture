@@ -1,10 +1,13 @@
 package com.carclinic.car_clinic_auto_workshop.dao.custom.impl;
 
+import com.carclinic.car_clinic_auto_workshop.dao.SQLUtil;
 import com.carclinic.car_clinic_auto_workshop.dao.custom.OrderDetailDAO;
 import com.carclinic.car_clinic_auto_workshop.entity.OrderDetailEntity;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static com.carclinic.car_clinic_auto_workshop.constant.Query.SAVE_ORDER_DETAIL;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
@@ -13,8 +16,16 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     }
 
     @Override
-    public boolean save(OrderDetailEntity customerDTO) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean save(OrderDetailEntity orderDetailEntity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute(SAVE_ORDER_DETAIL,
+                orderDetailEntity.getOrderId(),
+                orderDetailEntity.getItemId(),
+                orderDetailEntity.getQuantity(),
+                "system",
+                new java.sql.Date(new java.util.Date().getTime()),
+                null,
+                null
+        );
     }
 
     @Override

@@ -1,10 +1,13 @@
 package com.carclinic.car_clinic_auto_workshop.dao.custom.impl;
 
+import com.carclinic.car_clinic_auto_workshop.dao.SQLUtil;
 import com.carclinic.car_clinic_auto_workshop.dao.custom.SlotDAO;
 import com.carclinic.car_clinic_auto_workshop.entity.SlotEntity;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static com.carclinic.car_clinic_auto_workshop.constant.Query.UPDATE_SLOT_STATUS;
 
 public class SlotDAOImpl implements SlotDAO {
     @Override
@@ -18,8 +21,11 @@ public class SlotDAOImpl implements SlotDAO {
     }
 
     @Override
-    public boolean update(SlotEntity customerDTO) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean update(SlotEntity slotEntity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute(UPDATE_SLOT_STATUS,
+                "BUSY",
+                slotEntity.getSlotId()
+                );
     }
 
     @Override

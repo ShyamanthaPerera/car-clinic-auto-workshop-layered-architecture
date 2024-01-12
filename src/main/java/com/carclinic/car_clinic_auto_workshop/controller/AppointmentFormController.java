@@ -1,5 +1,8 @@
 package com.carclinic.car_clinic_auto_workshop.controller;
 
+import com.carclinic.car_clinic_auto_workshop.bo.BOFactory;
+import com.carclinic.car_clinic_auto_workshop.bo.custom.AppointmentBO;
+import com.carclinic.car_clinic_auto_workshop.bo.custom.CustomerBO;
 import com.carclinic.car_clinic_auto_workshop.dto.*;
 import com.carclinic.car_clinic_auto_workshop.view.tdm.AppointmentTM;
 import com.carclinic.car_clinic_auto_workshop.view.tdm.EmployeeTM;
@@ -148,6 +151,8 @@ public class AppointmentFormController {
     private Tab employeeTab;
     @FXML
     private Tab itemTab;
+
+    AppointmentBO appointmentBO = (AppointmentBO) BOFactory.getBoFactory().getBOObjects(BOFactory.BOTypes.APPOINTMENT);
 
     public void initialize() {
         setCellValueFactory();
@@ -477,8 +482,10 @@ public class AppointmentFormController {
 
             boolean isSaved = false;
             try {
-                isSaved = appointmentModel.save(appointmentDTO);
+                    isSaved = appointmentBO.save(appointmentDTO);
             } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
 

@@ -1,24 +1,40 @@
 package com.carclinic.car_clinic_auto_workshop.dao.custom.impl;
 
+import com.carclinic.car_clinic_auto_workshop.dao.SQLUtil;
 import com.carclinic.car_clinic_auto_workshop.dao.custom.ItemDAO;
+import com.carclinic.car_clinic_auto_workshop.dao.custom.OrderDAO;
 import com.carclinic.car_clinic_auto_workshop.entity.ItemEntity;
+import com.carclinic.car_clinic_auto_workshop.entity.OrderEntity;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class OrderDAOImpl implements ItemDAO {
+import static com.carclinic.car_clinic_auto_workshop.constant.Query.SAVE_ORDER;
+
+public class OrderDAOImpl implements OrderDAO {
     @Override
-    public ArrayList<ItemEntity> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderEntity> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean save(ItemEntity customerDTO) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean save(OrderEntity orderEntity) throws SQLException, ClassNotFoundException {
+        return SQLUtil.execute(SAVE_ORDER,
+                orderEntity.getOrderId(),
+                orderEntity.getApp_id(),
+                orderEntity.getAmount(),
+                orderEntity.getDate(),
+                orderEntity.getTime(),
+                "system",
+                new java.sql.Date(new java.util.Date().getTime()),
+                null,
+                null
+        );
     }
 
     @Override
-    public boolean update(ItemEntity customerDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(OrderEntity customerDTO) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -33,7 +49,7 @@ public class OrderDAOImpl implements ItemDAO {
     }
 
     @Override
-    public ArrayList<ItemEntity> search(String newValue) throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderEntity> search(String newValue) throws SQLException, ClassNotFoundException {
         return null;
     }
 }

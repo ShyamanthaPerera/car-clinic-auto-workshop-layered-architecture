@@ -8,7 +8,7 @@ public class ItemEntity {
     private Double unitPrice;
     private Integer qtyOnHand;
 
-    public ItemEntity() {
+    public ItemEntity(int qtyOnHand, String itemId) {
     }
 
     public ItemEntity(String itemId, String model, String description, Double unitPrice, Integer qtyOnHand) {

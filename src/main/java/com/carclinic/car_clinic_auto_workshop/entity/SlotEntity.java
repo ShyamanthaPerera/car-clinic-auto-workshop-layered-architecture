@@ -7,7 +7,7 @@ public class SlotEntity {
     private String space;
     private String chargingOutlet;
 
-    public SlotEntity() {
+    public SlotEntity(String slotId) {
     }
 
     public SlotEntity(String slotId, String status, String space, String chargingOutlet) {
