@@ -1,7 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
-import com.carclinic.car_clinic_auto_workshop.dto.CustomerDTO;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.EmployeeDTO;
 
 import java.sql.Connection;
@@ -17,7 +16,7 @@ public class EmployeeModel {
 
     public boolean saveEmployee(EmployeeDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_EMPLOYEE);
 
         statement.setString(1, dto.getEmpId());
@@ -35,7 +34,7 @@ public class EmployeeModel {
 
     public boolean updateEmployee(EmployeeDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(UPDATE_EMPLOYEE);
 
         statement.setString(1, dto.getName());
@@ -49,7 +48,7 @@ public class EmployeeModel {
 
     public boolean deleteEmployee(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_EMPLOYEE);
         statement.setString(1, id);
 
@@ -58,7 +57,7 @@ public class EmployeeModel {
 
     public EmployeeDTO searchEmployee(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection ();
+        Connection connection = DBConnection.getInstance().getConnection ();
         PreparedStatement statement = connection.prepareStatement(SEARCH_EMPLOYEE);
         statement.setString(1, id);
         ResultSet resultSet = statement.executeQuery();
@@ -79,7 +78,7 @@ public class EmployeeModel {
 
     public List<EmployeeDTO> getAllEmployeeBySearch(String searchVal) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_EMPLOYEE_BY_SEARCH_VAL);
 
         for (int i = 1; i <= 5; i++) {
@@ -105,7 +104,7 @@ public class EmployeeModel {
 
     public List<EmployeeDTO> getAllEmployee() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_EMPLOYEE);
         ResultSet resultSet = statement.executeQuery();
 
@@ -127,7 +126,7 @@ public class EmployeeModel {
 
     public List<EmployeeDTO> getAllEmployeeIDAndName() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_EMPLOYEE);
         ResultSet resultSet = statement.executeQuery();
 
@@ -146,7 +145,7 @@ public class EmployeeModel {
 
     public String generateNextCustomerId() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(GET_LAST_EMPLOYEE_ID);
 
         ResultSet resultSet = preparedStatement.executeQuery();

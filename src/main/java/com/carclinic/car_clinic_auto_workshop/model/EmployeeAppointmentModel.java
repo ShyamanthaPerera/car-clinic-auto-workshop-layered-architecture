@@ -1,6 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.EmployeeAppointmentDTO;
 
 import java.sql.Connection;
@@ -16,7 +16,7 @@ public class EmployeeAppointmentModel {
 
     public boolean saveEmployeeAppointment(EmployeeAppointmentDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_EMPLOYEE_APPOINTMENT);
 
         statement.setString(1, dto.getAppointmentId());
@@ -76,7 +76,7 @@ public class EmployeeAppointmentModel {
 
     public List<EmployeeAppointmentDTO> getAllEmployeeAppointment() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_EMPLOYEE_APPOINTMENT);
         ResultSet resultSet = statement.executeQuery();
 

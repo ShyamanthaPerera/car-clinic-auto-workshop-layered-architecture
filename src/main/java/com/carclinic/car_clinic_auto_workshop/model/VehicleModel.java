@@ -1,7 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
-import com.carclinic.car_clinic_auto_workshop.dto.CustomerDTO;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.VehicleDTO;
 
 import java.sql.Connection;
@@ -17,7 +16,7 @@ public class VehicleModel {
 
     public boolean saveVehicle(VehicleDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_VEHICLE);
 
         statement.setString(1, dto.getVclId());
@@ -35,7 +34,7 @@ public class VehicleModel {
 
     public boolean updateVehicle(VehicleDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(UPDATE_VEHICLE);
 
         statement.setString(1, dto.getCusId());
@@ -49,7 +48,7 @@ public class VehicleModel {
 
     public boolean deleteVehicle(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_VEHICLE);
 
         statement.setString(1, id);
@@ -59,7 +58,7 @@ public class VehicleModel {
 
     public VehicleDTO searchVehicle(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection ();
+        Connection connection = DBConnection.getInstance().getConnection ();
         PreparedStatement statement = connection.prepareStatement(SEARCH_VEHICLE);
 
         statement.setString(1, id);
@@ -84,7 +83,7 @@ public class VehicleModel {
 
     public List<VehicleDTO> getAllVehicle() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_VEHICLE);
         ResultSet resultSet = statement.executeQuery();
 
@@ -107,7 +106,7 @@ public class VehicleModel {
 
     public List<VehicleDTO> getAllVehicleBySearch(String searchVal) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_VEHICLE_BY_SEARCH_VAL);
 
         for (int i = 1; i <= 5; i++) {
@@ -134,7 +133,7 @@ public class VehicleModel {
 
     public String generateNextVehicleId() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(GET_LAST_VEHICLE_ID);
 
         ResultSet resultSet = preparedStatement.executeQuery();

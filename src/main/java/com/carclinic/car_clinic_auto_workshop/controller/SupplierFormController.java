@@ -1,7 +1,7 @@
 package com.carclinic.car_clinic_auto_workshop.controller;
 
 import com.carclinic.car_clinic_auto_workshop.dto.SupplierDTO;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.SupplierTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.SupplierTM;
 import com.carclinic.car_clinic_auto_workshop.model.SupplierModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;

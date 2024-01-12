@@ -1,7 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
-import com.carclinic.car_clinic_auto_workshop.dto.CustomerDTO;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.SupplierDTO;
 
 import java.sql.Connection;
@@ -17,7 +16,7 @@ public class SupplierModel {
 
     public boolean saveSupplier(SupplierDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_SUPPLIER);
 
         statement.setString(1, dto.getSupId());
@@ -34,7 +33,7 @@ public class SupplierModel {
 
     public boolean updateSupplier(SupplierDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(UPDATE_SUPPLIER);
 
         statement.setString(1, dto.getName());
@@ -47,7 +46,7 @@ public class SupplierModel {
 
     public boolean deleteSupplier(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_SUPPLIER);
 
         statement.setString(1, id);
@@ -57,7 +56,7 @@ public class SupplierModel {
 
     public SupplierDTO searchSupplier(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection ();
+        Connection connection = DBConnection.getInstance().getConnection ();
         PreparedStatement statement = connection.prepareStatement(SEARCH_SUPPLIER);
 
         statement.setString(1, id);
@@ -79,7 +78,7 @@ public class SupplierModel {
 
     public List<SupplierDTO> getAllSupplier() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_SUPPLIER);
         ResultSet resultSet = statement.executeQuery();
 
@@ -100,7 +99,7 @@ public class SupplierModel {
 
     public List<SupplierDTO> getAllSupplierBySearch(String searchVal) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_SUPPLIER_BY_SEARCH_VAL);
 
         for (int i = 1; i <= 5; i++) {
@@ -126,7 +125,7 @@ public class SupplierModel {
 
     public String generateNextSupplierId() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(GET_LAST_SUPPLIER_ID);
 
         ResultSet resultSet = preparedStatement.executeQuery();

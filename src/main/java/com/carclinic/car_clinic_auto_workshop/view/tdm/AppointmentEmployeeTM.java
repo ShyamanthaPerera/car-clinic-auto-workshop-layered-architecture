@@ -1,4 +1,4 @@
-package com.carclinic.car_clinic_auto_workshop.dto.tm;
+package com.carclinic.car_clinic_auto_workshop.view.tdm;
 
 import lombok.*;
 

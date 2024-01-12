@@ -1,9 +1,9 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.AppointmentDTO;
 import com.carclinic.car_clinic_auto_workshop.dto.EmployeeDTO;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.ItemTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.ItemTM;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,9 +18,9 @@ public class AppointmentModel {
 
 
     public boolean save(AppointmentDTO dto) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         try {
-            connection = DbConnection.getInstance().getConnection();
+            connection = DBConnection.getInstance().getConnection();
             connection.setAutoCommit(false);
 
             final boolean isSaveAppointment = saveAppointment(dto, connection);
@@ -159,7 +159,7 @@ public class AppointmentModel {
 
     public boolean updateAppointment(AppointmentDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(UPDATE_APPOINTMENT);
 
         statement.setString(1, dto.getCustomerId());
@@ -175,7 +175,7 @@ public class AppointmentModel {
 
     public boolean deleteAppointment(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_APPOINTMENT);
 
         statement.setString(1, id);
@@ -185,7 +185,7 @@ public class AppointmentModel {
 
     public AppointmentDTO searchAppointment(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SEARCH_APPOINTMENT);
 
         statement.setString(1, id);
@@ -214,7 +214,7 @@ public class AppointmentModel {
 
     public List<AppointmentDTO> getAllAppointment() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_APPOINTMENT);
         ResultSet resultSet = statement.executeQuery();
 
@@ -241,7 +241,7 @@ public class AppointmentModel {
 
     public String generateNextAppointmentId() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(GET_LAST_APPOINTMENT_ID);
 
         ResultSet resultSet = preparedStatement.executeQuery();

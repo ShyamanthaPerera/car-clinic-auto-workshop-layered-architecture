@@ -1,7 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
-import com.carclinic.car_clinic_auto_workshop.dto.CustomerDTO;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.ItemDTO;
 
 import java.sql.Connection;
@@ -17,7 +16,7 @@ public class ItemModel {
 
     public boolean saveItem(ItemDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_ITEM);
 
         statement.setString(1, dto.getItemId());
@@ -35,7 +34,7 @@ public class ItemModel {
 
     public boolean updateItem(ItemDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(UPDATE_ITEM);
 
         statement.setString(1, dto.getModel());
@@ -49,7 +48,7 @@ public class ItemModel {
 
     public boolean deleteItem(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_ITEM);
 
         statement.setString(1, id);
@@ -59,7 +58,7 @@ public class ItemModel {
 
     public ItemDTO searchItem(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection ();
+        Connection connection = DBConnection.getInstance().getConnection ();
         PreparedStatement statement = connection.prepareStatement(SEARCH_ITEM);
         
         statement.setString(1, id);
@@ -82,7 +81,7 @@ public class ItemModel {
 
     public List<ItemDTO> getAllItem() throws SQLException {
         
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_ITEM);
         ResultSet resultSet = statement.executeQuery();
 
@@ -104,7 +103,7 @@ public class ItemModel {
 
     public List<ItemDTO> getAllItemsBySearch(String searchVal) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_ITEMS_BY_SEARCH_VAL);
 
         for (int i = 1; i <= 5; i++) {
@@ -131,7 +130,7 @@ public class ItemModel {
 
     public String generateNextItemsId() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(GET_LAST_ITEM_ID);
 
         ResultSet resultSet = preparedStatement.executeQuery();

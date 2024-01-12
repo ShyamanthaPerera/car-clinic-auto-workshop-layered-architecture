@@ -1,8 +1,8 @@
 package com.carclinic.car_clinic_auto_workshop.controller;
 
 import com.carclinic.car_clinic_auto_workshop.dto.EmployeeDTO;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.AppointmentEmployeeTM;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.EmployeeTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.AppointmentEmployeeTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.EmployeeTM;
 import com.carclinic.car_clinic_auto_workshop.model.EmployeeModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;

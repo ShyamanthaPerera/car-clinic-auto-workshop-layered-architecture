@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DbConnection {
+public class DBConnection {
 
-    private static DbConnection dbConnection;
+    private static DBConnection dbConnection;
 
     private Connection connection;
 
-    private DbConnection() throws SQLException {
+    private DBConnection() throws SQLException {
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/car_clinic",
                 "root",
@@ -18,8 +18,8 @@ public class DbConnection {
         );
     }
 
-    public static DbConnection getInstance() throws SQLException {
-        return (null == dbConnection) ? dbConnection = new DbConnection() : dbConnection;
+    public static DBConnection getInstance() throws SQLException {
+        return (null == dbConnection) ? dbConnection = new DBConnection() : dbConnection;
     }
 
     public Connection getConnection(){

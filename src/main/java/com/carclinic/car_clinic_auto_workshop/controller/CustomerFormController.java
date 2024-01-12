@@ -1,9 +1,10 @@
 package com.carclinic.car_clinic_auto_workshop.controller;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
+import com.carclinic.car_clinic_auto_workshop.bo.BOFactory;
+import com.carclinic.car_clinic_auto_workshop.bo.custom.CustomerBO;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.CustomerDTO;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.CustomerTM;
-import com.carclinic.car_clinic_auto_workshop.model.CustomerModel;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.CustomerTM;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.mysql.cj.util.StringUtils;
@@ -27,6 +28,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -42,7 +44,6 @@ public class CustomerFormController {
     public Label lblTel;
     public JFXButton customerAddBtn;
     public JFXButton customerUpdateBtn;
-    CustomerModel customerModel = new CustomerModel();
     ObservableList<CustomerTM> observableList = FXCollections.observableArrayList();
     boolean isUpdate;
     @FXML
@@ -73,6 +74,8 @@ public class CustomerFormController {
 
     public VehicleFormController vehicleFormController;
 
+    CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getBOObjects(BOFactory.BOTypes.CUSTOMER);
+
     public void initialize() {
         setCellValueFactory();
         loadAllCustomers();
@@ -92,18 +95,18 @@ public class CustomerFormController {
         String cusEmail = textCustomerEmail34.getText();
         String cusTel = textCustomerNumber.getText();
 
-        CustomerDTO dto = new CustomerDTO(cusId, cusName, cusAddress, cusEmail, cusTel);
+        CustomerDTO customerDTO = new CustomerDTO(cusId, cusName, cusAddress, cusEmail, cusTel);
 
         try {
-            boolean isSaved = customerModel.saveCustomer(dto);
-
-            if (isSaved) {
+            boolean isSaved = customerBO.saveCustomer(customerDTO);
+            if (isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer Saved").show();
                 customerclearFields();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -119,14 +122,11 @@ public class CustomerFormController {
         CustomerDTO customerDTO = new CustomerDTO(cusId, cusName, cusAddress, cusEmail, cusTel);
 
         try {
-            boolean isUpdate = customerModel.updateCustomer(customerDTO);
-
-            if (isUpdate) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Customer Updated").show();
-                customerclearFields();
-            }
+            customerBO.updateCustomer(customerDTO);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -173,16 +173,17 @@ public class CustomerFormController {
                 String id = customerDTO.getCusId();
 
                 try {
-                    boolean isDelete = customerModel.deleteCustomer(id);
-
-                    if (isDelete) {
+                    boolean isSaved = customerBO.deleteCustomer(id);
+                    if (isSaved){
                         new Alert(Alert.AlertType.CONFIRMATION, "Customer Deleted").show();
                     }
-                } catch (SQLException exception) {
-                    new Alert(Alert.AlertType.ERROR, exception.getMessage()).show();
+                } catch (SQLException ex) {
+                    new Alert(Alert.AlertType.ERROR, ex.getMessage()).show();
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
                 }
-                int focusedIndex = CustomerTbl.getSelectionModel().getFocusedIndex();
 
+                int focusedIndex = CustomerTbl.getSelectionModel().getFocusedIndex();
                 observableList.remove(focusedIndex);
                 CustomerTbl.refresh();
             }
@@ -222,7 +223,12 @@ public class CustomerFormController {
     private void dynamicSearchAction(KeyEvent event) {
         if (!txtdynamicSearch.getText().trim().isEmpty()) {
             try {
-                List<CustomerDTO> dtoList = customerModel.getAllCustomerBySearch(txtdynamicSearch.getText());
+                List<CustomerDTO> dtoList = null;
+                try {
+                    dtoList = customerBO.search(txtdynamicSearch.getText());
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
                 mapCustomerTableVal(dtoList);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -233,10 +239,13 @@ public class CustomerFormController {
     }
 
     public void loadAllCustomers() {
+
         try {
-            List<CustomerDTO> dtoList = customerModel.getAllCustomer();
-            mapCustomerTableVal(dtoList);
+            List<CustomerDTO> getAllCustomers = customerBO.getAllCustomers();
+            mapCustomerTableVal(getAllCustomers);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -377,11 +386,14 @@ public class CustomerFormController {
     }
 
     private void generateNextCustomerId() {
+
         try {
-            String customerId = customerModel.generateNextCustomerId();
-            textCustomerID.setText(customerId);
+           String customerId = customerBO.generateNewCustomerId();
+           textCustomerID.setText(customerId);
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -391,7 +403,7 @@ public class CustomerFormController {
         JasperDesign load = JRXmlLoader.load(inputStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
 
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
         JasperViewer.viewReport(jasperPrint,false);
     }
 

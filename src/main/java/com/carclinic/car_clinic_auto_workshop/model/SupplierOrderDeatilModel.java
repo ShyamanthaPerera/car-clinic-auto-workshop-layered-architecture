@@ -1,6 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.SupplierOrderDetailDTO;
 
 import java.sql.Connection;
@@ -16,7 +16,7 @@ public class SupplierOrderDeatilModel {
 
     public boolean saveSupplierOrderDetail(SupplierOrderDetailDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_SUPPLIER_ORDER_DETAIL);
 
         statement.setString(1, dto.getSupId());
@@ -77,7 +77,7 @@ public class SupplierOrderDeatilModel {
 
     public List<SupplierOrderDetailDTO> getAllSupplierOrderDetail() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_SUPPLIER_ORDER_DETAIL);
         ResultSet resultSet = statement.executeQuery();
 

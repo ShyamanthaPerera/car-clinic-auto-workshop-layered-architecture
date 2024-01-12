@@ -2,8 +2,7 @@ package com.carclinic.car_clinic_auto_workshop.controller;
 
 import com.carclinic.car_clinic_auto_workshop.dto.CustomerDTO;
 import com.carclinic.car_clinic_auto_workshop.dto.VehicleDTO;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.VehicleTM;
-import com.carclinic.car_clinic_auto_workshop.model.CustomerModel;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.VehicleTM;
 import com.carclinic.car_clinic_auto_workshop.model.VehicleModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -100,8 +99,6 @@ public class VehicleFormController {
     private JFXTextField txtdynamicSearch;
 
     VehicleModel vehicleModel = new VehicleModel();
-
-    CustomerModel customerModel=new CustomerModel();
 
     ObservableList<VehicleTM> observableList = FXCollections.observableArrayList();
 

@@ -1,6 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.SlotDTO;
 
 import java.sql.Connection;
@@ -16,7 +16,7 @@ public class SlotModel {
 
     public boolean saveSlot(SlotDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_SLOT);
 
         statement.setString(1, dto.getSlotId());
@@ -29,7 +29,7 @@ public class SlotModel {
 
     public boolean updateSlot(SlotDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(UPDATE_SLOT);
 
         statement.setString(1, dto.getStatus());
@@ -42,7 +42,7 @@ public class SlotModel {
 
     public boolean deleteSlot(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_SLOT);
 
         statement.setString(1, id);
@@ -52,7 +52,7 @@ public class SlotModel {
 
     public SlotDTO searchSlot(String id) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection ();
+        Connection connection = DBConnection.getInstance().getConnection ();
         PreparedStatement statement = connection.prepareStatement(SEARCH_SLOT);
 
         statement.setString(1, id);
@@ -74,7 +74,7 @@ public class SlotModel {
 
     public List<SlotDTO> getAllSlot() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_SLOT);
         ResultSet resultSet = statement.executeQuery();
 
@@ -95,7 +95,7 @@ public class SlotModel {
 
     public List<SlotDTO> getAllStatus() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_STATUS);
         ResultSet resultSet = statement.executeQuery();
 

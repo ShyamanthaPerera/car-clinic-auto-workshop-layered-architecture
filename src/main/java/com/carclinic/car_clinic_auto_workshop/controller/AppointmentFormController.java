@@ -1,9 +1,9 @@
 package com.carclinic.car_clinic_auto_workshop.controller;
 
 import com.carclinic.car_clinic_auto_workshop.dto.*;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.AppointmentTM;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.EmployeeTM;
-import com.carclinic.car_clinic_auto_workshop.dto.tm.ItemTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.AppointmentTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.EmployeeTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.ItemTM;
 import com.carclinic.car_clinic_auto_workshop.model.AppointmentModel;
 import com.carclinic.car_clinic_auto_workshop.model.OrderModel;
 import com.jfoenix.controls.*;

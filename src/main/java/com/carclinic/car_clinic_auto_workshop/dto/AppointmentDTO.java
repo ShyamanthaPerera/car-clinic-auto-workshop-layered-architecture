@@ -1,6 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.dto;
 
-import com.carclinic.car_clinic_auto_workshop.dto.tm.ItemTM;
+import com.carclinic.car_clinic_auto_workshop.view.tdm.ItemTM;
 import lombok.*;
 
 import java.util.List;

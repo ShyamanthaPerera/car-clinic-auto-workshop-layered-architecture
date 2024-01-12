@@ -1,7 +1,6 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
-import com.carclinic.car_clinic_auto_workshop.dto.CustomerDTO;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 import com.carclinic.car_clinic_auto_workshop.dto.UserDTO;
 
 import java.sql.Connection;
@@ -17,7 +16,7 @@ public class UserModel {
 
     public boolean saveUser(UserDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(SAVE_USER);
 
         statement.setString(1, dto.getUserName());
@@ -33,7 +32,7 @@ public class UserModel {
 
     public boolean updateUser(UserDTO dto) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(UPDATE_USER);
 
         statement.setString(1, dto.getPassword());
@@ -45,7 +44,7 @@ public class UserModel {
 
     public boolean deleteUser(String user_name) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(DELETE_USER);
 
         statement.setString(1, user_name);
@@ -55,7 +54,7 @@ public class UserModel {
 
     public UserDTO searchUser(String userName) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection ();
+        Connection connection = DBConnection.getInstance().getConnection ();
         PreparedStatement statement = connection.prepareStatement(SEARCH_USER);
 
         statement.setString(1, userName);
@@ -78,7 +77,7 @@ public class UserModel {
 
     public List<UserDTO> getAllUser() throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_USER);
         ResultSet resultSet = statement.executeQuery();
 
@@ -98,7 +97,7 @@ public class UserModel {
 
     public List<UserDTO> getAllCustomerBySearch(String searchVal) throws SQLException {
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(LOAD_ALL_USER_BY_SEARCH_VAL);
 
         for (int i = 1; i <= 5; i++) {

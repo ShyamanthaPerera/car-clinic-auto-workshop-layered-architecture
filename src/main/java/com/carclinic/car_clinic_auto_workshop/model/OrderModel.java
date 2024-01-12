@@ -1,14 +1,11 @@
 package com.carclinic.car_clinic_auto_workshop.model;
 
-import com.carclinic.car_clinic_auto_workshop.db.DbConnection;
-import com.carclinic.car_clinic_auto_workshop.dto.OrderDTO;
+import com.carclinic.car_clinic_auto_workshop.db.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.carclinic.car_clinic_auto_workshop.constant.Query.*;
 
@@ -99,7 +96,7 @@ public class OrderModel {
 
         public String generateNextOrderId() throws SQLException {
 
-            Connection connection = DbConnection.getInstance().getConnection();
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_LAST_ORDER_ID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
